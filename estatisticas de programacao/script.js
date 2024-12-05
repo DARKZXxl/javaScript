@@ -7,6 +7,10 @@ const media = (...valor) => {
     const conta = result.reduce((total, item) => total + item, 0)
     const contaFinal = conta / num.length
     alert('sua media e ' + contaFinal)
+
+const médiaPonderada = () => {
+    const numero = prompt('digite o valor do numero')
+    const peso = prompt('digite o valor do peso')
 }
 
 do {
