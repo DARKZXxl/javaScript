@@ -1,8 +1,12 @@
-const palavraRecuperada = localStorage.getItem('palavra');
+// const palavraRecuperada = localStorage.getItem('palavra');
+const palavraRecuperada = 'xxxxxxxxxxxxxxx'
 const dica = localStorage.getItem('dica')
 const ajuda = document.getElementById('ajuda')
 const letras = document.getElementById('letras')
-const button = document.querySelectorAll('button')
+const button = document.querySelectorAll('#button button')
+const reiniciar = document.getElementById('reiniciar')
+const resultado = document.querySelector('#result p')
+const result = document.querySelector('#result')
 const arry = [...palavraRecuperada]
 const valores = []
 let erros = 0
@@ -65,7 +69,12 @@ button.forEach(btn => {
 })
 
 function estado(voce) {
-    alert('voce ' + voce)
+    resultado.innerText = 'voce ' + voce + '!'
+    result.style.display = 'block'
 }
+
+reiniciar.addEventListener('click', () => {
+    location.href = 'index.html';
+})
 
 
