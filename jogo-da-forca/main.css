@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'giz';
+    src: url(vtks\ giz.ttf);
+}
+
+body {
+    font-family: 'giz';
+    background-image: url('tma-chalkboard.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+#pai {
+    display: flex;
+    justify-content: center;
+}
+button {
+    color: rgb(255, 255, 255);
+    font-family: 'giz';
+    border: none;
+    font-size: 20px;
+    margin: 5px;
+    color: black;
+    border-radius: 5px;
+}
+
+#tudo {
+    position: absolute;
+    top: 55%;
+    left: 75%;
+    transform: translate(-50%, -60%);
+}
+
+#boneco {
+    position: relative;
+    top: 166px;
+    left: 50%;
+}
+
+.cabeca {
+    border: 5px solid rgb(255, 255, 255);
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+}
+
+.corpo {
+    background-color: white;
+    width: 7px;
+    height: 140px;
+    position: absolute;
+    left: 21px;
+}
+
+.bracoE {
+    background-color: white;
+    height: 7px;
+    width: 55px;
+    position: absolute;
+    top: 80px;
+    left: -30px;
+    transform: rotate(-20deg);
+}
+.bracoD {
+    background-color: white;
+    height: 7px;
+    width: 55px;
+    position: absolute;
+    top: 80px;
+    left: 23px;
+    transform: rotate(20deg);
+}
+
+.peE {
+    position: absolute;
+    top: 207px;
+    left: -26px;
+    background-color: white;
+    width: 60px;
+    height: 7px;
+    transform: rotate(-50deg);
+}
+
+.peD {
+    position: absolute;
+    top: 205px;
+    left: 14px;
+    background-color: white;
+    width: 60px;
+    height: 7px;
+    transform: rotate(50deg);
+}
+
+#forca {
+    position: relative;
+    left: -188px;
+    top: 18px;
+}
+
+#base {
+    background-color: white;
+    width: 131px;
+    height: 20px;
+}
+
+#pe {
+    background-color: white;
+    height: 400px;
+    width: 5px;
+    margin-left: 60px;
+}
+
+#deitado {
+    background-color: white;
+    width: 230px;
+    height: 5px;
+    position: absolute;
+    left: 50px;
+}
+
+#dig {
+    background-color: white;
+    position: absolute;
+    left: 51px;
+    top: 30px;
+    width: 90px;
+    height: 5px;
+    transform: rotate(-40deg);
+}
+
+#corda {
+    background-color: white;
+    height: 100px;
+    width: 5px;
+    position: absolute;
+    top: 0;
+    left: 280px;
+}
+
+#letras div {
+    background-color: white;
+    display: inline-block;
+    width: 15px;
+    height: 1px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+#letras {
+    position: absolute;
+    bottom: -70px;
+    left: -185px;
+}
+
+#dica {
+    position: absolute;
+    bottom: -110px;
+    left: -180px;
+    color: #ffffff;
+}
