@@ -9,6 +9,7 @@
 // instalar dependencias globais npm install --global "nome do modulo/pacote"
 
 // para remover um pacote se usa o mpn uninstall "nome do pacote"
+// se eu quiser baixar algo dps de eu ter apagado e so eu usar npm install que volta o arquivo "node_modules"
 const lodash = require('lodash')
 
 // verifica se isso e um arry 

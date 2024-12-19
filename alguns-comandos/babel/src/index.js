@@ -2,7 +2,7 @@
 // pega o codigo de ES6 e trasforma em versoes mais antigas
 
 // para fazer uma trasformacao basta ecrever "npx babel (nome do arquivo a ser convertido)" mas essa conversao so faz no terminal
-// se eu quiser jogar em outro arquivo o comando e esse "npx babel (arquivo do codigo) --out-file (arquivo de saida) --presets=@babel/preset-env"
+// se eu quiser jogar criar outra pasta com o codigo o comando e esse "npx babel (arquivo do codigo) --out-file (arquivo de saida) --presets=@babel/preset-env"
 // e para trasformar um arquivo todo usa "npx babel (nome do arquivo) --out-dir (arquivo de saida) --presets=@babel/preset-env"
 let opcao = ''
 const media = (...valor) => {
