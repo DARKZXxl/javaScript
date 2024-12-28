@@ -4,6 +4,8 @@
 // o path.resolve(__dirname) coloca o caminho da ate minha pasta atual mas antes tem que dar um require em o modulo "path" para pegar de fontes externar
 // o public e o nome do pasta que o arquivo de saida vai ser 
 
+const miniCss = require('mini-css-extract-plugin')
+
 const path = require('path')
 module.exports = {
     entry: {
@@ -22,8 +24,10 @@ module.exports = {
             // em quais arquivos ele vai executar o loader
             test: /\.css$/,
             // serve para escolher qual loader o webpack vai usar mas tem baixar antes
-            use: ['style-loader', 'css-loader']
+            use: [miniCss.loader, 'css-loader']
         }]
-    }
-
+    },
+    plugins: [
+        new miniCss()
+    ]
 }
