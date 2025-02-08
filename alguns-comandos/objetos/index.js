@@ -23,3 +23,4 @@ do {
 } while (opicoes != '4');
 
 // objetos globais
+// Data, Math, Object, Arry etc...

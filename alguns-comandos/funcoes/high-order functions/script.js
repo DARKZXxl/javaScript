@@ -153,3 +153,15 @@ const map = pessoas.map((user) =>{
     }
 })
 console.log(map)
+
+// sort
+// ordena na ordem alfabeta crescete
+console.log(pessoas.sort())
+// ordena na ordem alfabeta decrescete
+console.log(pessoas.sort().reverse())
+
+// numeros
+// ordena os numeros de forma crescente
+console.log(pessoas.sort((a, b) => a - b))
+// ordena os numeros de forma decrescente
+console.log(pessoas.sort((a, b) => b - a))

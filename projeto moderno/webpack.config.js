@@ -1,16 +1,22 @@
 const path = require('path')
-
+const { devServer } = require('../alguns-comandos/webpack/webpack.config')
 module.exports = {
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist')
+        },
+        port: 8080
+    },
     entry: {
         index: './src/index.js'
     },
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [{
-            test: /\.css$/,
+            test: /\.js$/,
             use: ['style-loader', 'css-loader']
         }, {
-            test: /\.js$/,
+            test: /\.js/,
             use: ['babel-loader']
         }]
     },

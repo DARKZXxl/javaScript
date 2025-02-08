@@ -1,5 +1,5 @@
 const dayjs = require("dayjs")
-const data = dayjs('2008-10-23')
+const data = dayjs('1972-07-29')
 const today = dayjs()
 
 function idade() {

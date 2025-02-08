@@ -8,6 +8,13 @@ const miniCss = require('mini-css-extract-plugin')
 
 const path = require('path')
 module.exports = {
+    devServer: {
+            // caminho das pastas
+            static: {
+                directory: path.resolve(__dirname, 'dist')
+            },
+            port: 8000
+        },
     entry: {
         index: './src/index.js',
     },
@@ -31,3 +38,8 @@ module.exports = {
         new miniCss()
     ]
 }
+
+// webpack-dev-server
+// ele e um pacote usado em conjunto com o webpack que permite que nos criamos um servidor de desenvolvimento para usar ele e parecido com o "live-server"
+// ele e istalado pelo npm como pacote de desenvolvimento ou seja "npm i -D webpack-dev-server"
+// se utiliza com "npx webpack-dev-server" mas tem que configurar antes
