@@ -10,6 +10,8 @@ function sum(a, b) {
     const num2 = Number(b)
 
     if(isNaN(num1) || isNaN(num2)) {
+        // se eu colocar o erro dentro de uma variavel eu posso escolher quando eu lancar o erro 
+        // ex: const err = new Error('teste')
         throw new Error('deu merda no bagulho')
     }
     

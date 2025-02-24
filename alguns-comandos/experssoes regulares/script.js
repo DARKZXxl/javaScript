@@ -1,5 +1,6 @@
 // expressoes regulares e uma forma de encontrar padroes em um string
 // o ^ mostra o primeiro que voce escrever ex: /^gabriel/
+// o ^ dentro dos conchetes e um exprecao de negacao igual o ! 
 // o $ mostra o ultimo que voce colocar ex: /gabriel$/
 // o | encontra uma coisa ou outra ex: /gabriel | felipe/
 // o + mostra as letras em sequencia ex: /a+/ mostras todos que tem mais de um a em sequencia
