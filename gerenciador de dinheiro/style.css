@@ -74,8 +74,6 @@
   
   .editar {
     background-color: #7bb4ff;
-    position: absolut;
-    left: 30rem;
   }
 
   .buttons {
@@ -87,13 +85,61 @@
     background-color: #f64348;
   }
 
+
   .linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.449);
     padding: 10px;
-  }
+    font-size: 20px;
+}
+
+.linha .info {
+    flex: 1;
+}
+
+.linha .actions {
+    display: flex;
+    gap: 10px;
+}
+
+
   
   @media screen and (max-width: 768px) {
     main {
       flex-direction: column;
     }
   }
+
+  @media screen and (max-width: 568px) {
+    .deletar {
+        font-size: .8rem;
+        padding: .4rem .9rem;
+    }
+
+    .editar {
+        font-size: .8rem;
+        padding: .4rem .9rem;
+    }
+
+    .linha {
+        font-size: 17px;
+    }
+}
+@media screen and (max-width: 368px) {
+  .deletar {
+      font-size: .7rem;
+      padding: .3rem .8rem;
+  }
+
+  .editar {
+      font-size: .7rem;
+      padding: .3rem .8rem;
+  }
+
+  .linha {
+      font-size: 16px;
+  }
+
+}

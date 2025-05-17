@@ -10,90 +10,88 @@ let i = 0
 saldo.innerText = saldoAtual
 
 function mostrarNaTela(item) {
-    const editar = document.createElement('button')
-    editar.innerText = 'editar'
-    editar.classList.add('editar')
+    const editar = document.createElement('button');
+    editar.innerText = 'editar';
+    editar.classList.add('editar');
     editar.dataset.id = item.id;
 
-    const deletar = document.createElement('button')
-    deletar.classList.add('deletar')
-    deletar.innerText = 'deletar'
+    const deletar = document.createElement('button');
+    deletar.classList.add('deletar');
+    deletar.innerText = 'deletar';
     deletar.dataset.id = item.id;
-    
-    const linha = document.createElement('p')
-    linha.innerHTML = `${item.nome} R$${item.valor}`
-    linha.dataset.id = item.id;
 
-    linha.classList.add('linha')
+    const valorSpan = document.createElement('span');
+    valorSpan.classList.add('valor');
 
-    mudarCor(linha, item, editar, deletar);
+    const linha = document.createElement('div');
+    linha.classList.add('linha');
 
-    linha.append(editar, deletar)
-    historico.append(linha)
-    i++
-    
-    
+    const info = document.createElement('span');
+    info.classList.add('info');
+    info.innerText = item.nome;
+
+    const actions = document.createElement('div');
+    actions.classList.add('actions');
+    actions.append(valorSpan, editar, deletar);
+
+    linha.append(info, actions);
+    historico.append(linha);
+
+    // Chama a função mudarCor para definir a cor do valor
+    mudarCor(valorSpan, item.valor);
+
     editar.addEventListener('click', async (ev) => {
-        ev.preventDefault()
+        ev.preventDefault();
         const alvo = ev.target.dataset.id;
 
-        const novoValor = prompt('digite o novo valor')
-        const novoNome = prompt('digite o novo nome')
+        const novoValor = prompt('Digite o novo valor');
+        const novoNome = prompt('Digite o novo nome');
 
         if (isNaN(novoValor) || typeof novoNome !== 'string' || !novoValor.trim()) {
-            throw new Error('the values ​​entered are not valid');
+            alert('Os valores inseridos não são válidos.');
+            return;
         }
 
-        const valores = {
-            valor: novoValor,
-            nome: novoNome
-        }
+        const valores = { valor: novoValor, nome: novoNome };
 
-        try{
+        try {
             const resposta = await fetch(`http://localhost:3000/trasferencias/${alvo}`, {
                 method: 'PUT',
-                headers: {
-                'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(valores)
-            })
-        
-            const salvar = await resposta.json()
-        
-            mudarSaldo(salvar.valor - item.valor)
-            linha.innerText = `${salvar.nome} R$${salvar.valor}`
-            mudarCor(linha, salvar, editar, deletar); 
+            });
 
-            item.valor = salvar.valor;
-            item.nome = salvar.nome;
+            const salvar = await resposta.json();
+            info.innerText = salvar.nome;
+            valorSpan.innerText = `R$ ${salvar.valor}`;
+            
+            // Atualiza a cor após edição
+            mudarCor(valorSpan, salvar.valor);
+        } catch (err) {
+            console.error('Erro: ' + err);
         }
-        catch(err) {
-            console.log('Erro: ' + err)
-        }
+    });
 
-    })
-
+    // diminuir o valor do saldo quando excluir algo
     deletar.addEventListener('click', async (ev) => {
-        ev.preventDefault()
+        ev.preventDefault();
         const alvo = ev.target.dataset.id;
 
-        const resposta = await fetch(`http://localhost:3000/trasferencias/${alvo}`, {
-            method: 'DELETE'
-        })
-
-        const salvar = await resposta.json()
-        
-        mudarSaldo(-salvar.valor)
-        historico.removeChild(linha);
-    })
-
+        try {
+            const resposta = await fetch(`http://localhost:3000/trasferencias/${alvo}`, { method: 'DELETE' }).then(res => res.json())
+            historico.removeChild(linha);
+            mudarSaldo(saldoAtual - resposta.valor)
+        } catch (err) {
+            console.error('Erro: ' + err);
+        }
+    });
 }
 
 // enviando a requisicao
 form.addEventListener('submit', async (ev) => {
     ev.preventDefault()
 
-    if (isNaN(valor.value) || typeof nome.value !== 'string' || !novoValor.trim()) {
+    if (isNaN(valor.value) || typeof nome.value !== 'string') {
         throw new Error('the values ​​entered are not valid');
     }
 
@@ -149,13 +147,12 @@ window.addEventListener('DOMContentLoaded', async (ev) => {
     pegandoOsDados()
 })
 
-function mudarCor(linha, reais, editar, deletar) {
-    if (reais.valor >= 0) {
-        linha.innerHTML = `${reais.nome} <span style="color: green;">R$ ${reais.valor} C </span>`;
+function mudarCor(elemento, valor) {
+    if (valor >= 0) {
+        elemento.style.color = "green";
+        elemento.innerText = `R$ ${valor} C`;
     } else {
-        linha.innerHTML = `${reais.nome} <span style="color: red;">-R$ ${Math.abs(reais.valor)} D </span>`;
+        elemento.style.color = "red";
+        elemento.innerText = `-R$ ${Math.abs(valor)} D`;
     }
-
-    linha.append(editar, deletar)
-
 }
